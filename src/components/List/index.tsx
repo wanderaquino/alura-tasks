@@ -1,14 +1,23 @@
 import { ListItem } from "./ListItem";
 import style from "./style.module.scss";
+import { useState } from "react";
 
-export function List () {
+type ListProps = {
+    tasks: {
+        title: string;
+        time: string
+    }[]
+};
+
+export function List ({tasks} : ListProps) {
     return (
         <aside className={style.listaTarefas}>
             <h2>Estudos do dia</h2>
             <ul>
-                <ListItem title="React" time="02:00:00" />
-                <ListItem title="VueJS" time="01:00:00" />
-                <ListItem title="Javascript" time="03:00:00" />
+                {
+                    tasks.map((task, index) => 
+                    <ListItem key={index} title={task.title} time={task.time}></ListItem>)
+                }
             </ul>
         </aside>
     )
