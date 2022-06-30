@@ -1,10 +1,11 @@
 import React from "react";
 import {Button} from "../Button/index";
+import style from "./style.module.scss";
 
 export function Form () {
     return (
-        <form>
-            <div>
+        <form className={style.novaTarefa}>
+            <div className={style.inputContainer}>
                 <label htmlFor="task">Adicione um novo estudo</label>
                 <input 
                     type="text" 
@@ -13,7 +14,7 @@ export function Form () {
                     placeholder="O que você quer estudar hoje?" 
                     required></input>
             </div>
-            <div>
+            <div className={style.inputContainer}>
                 <label htmlFor="time">Tempo</label>
                 <input 
                     type="time"
@@ -24,7 +25,7 @@ export function Form () {
                     max="01:30:00"
                     required></input>
             </div>
-            <Button></Button>
+            <Button textButton="Adicionar" />
         </form>
     )
 }
