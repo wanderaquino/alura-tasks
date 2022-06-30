@@ -1,9 +1,13 @@
-import React from "react";
+import style from "./style.module.scss";
 
-export function Button () {
+type ButtonProps = {
+    textButton: string;
+}
+
+export function Button ({textButton} : ButtonProps) {
     return (
-        <button>
-            Botão
+        <button className={style.button}>
+            {textButton}
         </button>
     )
 }
