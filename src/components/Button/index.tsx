@@ -6,7 +6,7 @@ type ButtonProps = {
 
 export function Button ({textButton} : ButtonProps) {
     return (
-        <button className={style.button}>
+        <button className={style.button} type="submit">
             {textButton}
         </button>
     )
