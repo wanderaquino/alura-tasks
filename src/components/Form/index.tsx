@@ -2,7 +2,7 @@ import {Button} from "../Button/index";
 import style from "./style.module.scss";
 import {FormEvent, useState} from "react";
 
-type FormProps = {
+interface FormProps {
     addTask: ({} : {title: string, time: string})=>void
 }
 export function Form ({addTask} : FormProps) {
@@ -18,7 +18,7 @@ export function Form ({addTask} : FormProps) {
         setTime(time);
     }
 
-    function setNewTask(e:any){
+    function setNewTask(e:FormEvent){
         e.preventDefault();
         if(title === undefined || time === undefined) {
             return;
