@@ -1,7 +1,7 @@
 import { ListItem } from "./ListItem";
 import style from "./style.module.scss";
 
-type ListProps = {
+interface ListProps {
     tasks: {
         title: string;
         time: string
