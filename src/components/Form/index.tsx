@@ -1,6 +1,6 @@
 import {Button} from "../Button/index";
 import style from "./style.module.scss";
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 
 type FormProps = {
     addTask: ({} : {title: string, time: string})=>void
