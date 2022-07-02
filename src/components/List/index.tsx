@@ -1,6 +1,5 @@
 import { ListItem } from "./ListItem";
 import style from "./style.module.scss";
-import { useState } from "react";
 
 type ListProps = {
     tasks: {
