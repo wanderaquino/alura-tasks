@@ -1,4 +1,3 @@
-import React from "react";
 import {Button} from "../Button/index";
 import style from "./style.module.scss";
 import {useState} from "react";
