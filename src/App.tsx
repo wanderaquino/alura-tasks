@@ -20,12 +20,12 @@ function App() {
 
   function selectTask (taskItem:TaskItemProps) {
     setTaskList(previousTaskList => 
-        {
+      {
         return {
           tasks: previousTaskList.tasks.map(task => {
             return {
               ...task, isSelected: task.id === taskItem.id ? true : false
-        }
+            }
           })
         }
       }
