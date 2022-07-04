@@ -7,6 +7,17 @@ import {TaskItemProps, TaskListProps} from "./types/types";
 
 function App() {
 
+  const [taskList, setTaskList] = useState<TaskListProps>({
+    tasks: []
+  });
+
+  function addNewTask({id, title, time, isSelected = false}: TaskItemProps ) {
+    const {tasks} = taskList;
+    setTaskList({
+        tasks: [...tasks, {id, title, time, isSelected}]
+      });
+  }
+
   function selectTask (taskItem:TaskItemProps) {
     setTaskList(previousTaskList => 
         {
