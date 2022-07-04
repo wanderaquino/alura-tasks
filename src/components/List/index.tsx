@@ -1,22 +1,16 @@
 import { ListItem } from "./ListItem";
 import style from "./style.module.scss";
+import { TaskList } from "../../types/types";
 
-interface ListProps {
-    tasks: {
-        title: string;
-        time: string
-    }[]
-};
-
-export function List ({tasks} : ListProps) {
+export function List ({tasks, selectFunction} : TaskList) {
     return (
         <aside className={style.listaTarefas}>
         {
         tasks !== undefined && tasks.length > 0 ?
         <>
-            <h2>Estudos do dia</h2>
-            <ul>
-                {
+        <h2>Estudos do dia</h2>
+        <ul>
+            {
                 tasks.map((task) => 
                 <ListItem 
                     key={task.id}
@@ -26,8 +20,8 @@ export function List ({tasks} : ListProps) {
                     isSelected={task.isSelected}
                     selectFunction={selectFunction} 
                 />)
-                }
-            </ul>
+            }
+        </ul>
         </>
         : 
         <h2>Você não possui atividades cadastradas ainda. Que tal adicionar uma nova?</h2>
