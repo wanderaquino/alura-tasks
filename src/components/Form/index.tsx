@@ -25,7 +25,7 @@ export function Form ({addTask} : FormProps) {
         if(title === undefined || time === undefined) {
             return;
         }
-        addTask({title, time});
+        addTask({id: v4(), title, time, isSelected: false});
     };
 
     return (
