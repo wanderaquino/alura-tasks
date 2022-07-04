@@ -24,3 +24,9 @@ export interface FormProps {
 export interface WatchProps {
     time: string
 }
+
+export interface ButtonProps {
+    textButton: string,
+    type: "button" | "submit" | "reset",
+    onClickFunction: () => void
+}
