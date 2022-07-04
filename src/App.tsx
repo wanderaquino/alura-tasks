@@ -35,7 +35,9 @@ function App() {
   return (
     <div className={style.AppStyle}>
       <Form addTask={addNewTask}/>
-      <List tasks={tasks}/>
+      {
+        taskList.tasks && <List tasks={taskList.tasks} selectFunction={selectTask}/>
+      }
       <Stopwatch />
     </div>
   )
