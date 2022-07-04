@@ -3,20 +3,22 @@ import {List} from "./components/List";
 import style from "./App.module.scss";
 import { Stopwatch } from "./components/Stopwatch";
 import { useState } from "react";
+import {TaskItemProps, TaskListProps} from "./types/types";
 
 function App() {
 
-  const [tasks, setTasks] = useState( [
+  function selectTask (taskItem:TaskItemProps) {
+    setTaskList(previousTaskList => 
         {
-            title: "VueJs",
-            time: "01:00:00"
+        return {
+          tasks: previousTaskList.tasks.map(task => {
+            return {
+              ...task, isSelected: task.id === taskItem.id ? true : false
         }
-      ]
-  );
-
-  function addNewTask({title, time} : {title: string, time: string}) {
-    const taskState = tasks;
-    setTasks([...taskState, {title, time}]);
+          })
+        }
+      }
+    )
   }
 
   return (
