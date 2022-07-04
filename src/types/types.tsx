@@ -20,3 +20,7 @@ export interface SelectableTaskList extends TaskListProps {
 export interface FormProps {
     addTask: ({} : TaskItemProps)=>void
 }
+
+export interface WatchProps {
+    time: string
+}
