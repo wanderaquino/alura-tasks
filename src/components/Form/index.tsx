@@ -1,6 +1,7 @@
 import {Button} from "../Button/index";
 import style from "./style.module.scss";
 import {FormEvent, useState} from "react";
+import { FormProps } from "../../types/types";
 import {v4} from "uuid";
 
 interface FormProps {
