@@ -11,6 +11,8 @@ function App() {
     tasks: []
   });
 
+  const [selectedTask, setSelectedTask] = useState<TaskItemProps>();
+
   function addNewTask({id, title, time, isSelected = false}: TaskItemProps ) {
     const {tasks} = taskList;
     setTaskList({
@@ -19,6 +21,7 @@ function App() {
   }
 
   function selectTask (taskItem:TaskItemProps) {
+    setSelectedTask(taskItem);
     setTaskList(previousTaskList => 
       {
         return {
@@ -38,7 +41,7 @@ function App() {
       {
         taskList.tasks && <List tasks={taskList.tasks} selectFunction={selectTask}/>
       }
-      <Stopwatch />
+      <Stopwatch time={selectedTask ? selectedTask.time : "00:00"}/>
     </div>
   )
 }
