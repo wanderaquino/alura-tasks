@@ -4,9 +4,7 @@ import {FormEvent, useState} from "react";
 import { FormProps } from "../../types/types";
 import {v4} from "uuid";
 
-interface FormProps {
-    addTask: ({} : {title: string, time: string})=>void
-}
+
 export function Form ({addTask} : FormProps) {
 
     const [title, setTitle] = useState<string>();
