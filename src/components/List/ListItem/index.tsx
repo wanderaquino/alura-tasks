@@ -1,7 +1,7 @@
 import style from "./style.module.scss";
-import { TaskProps } from "../../../types/types";
+import { SelectableTask } from "../../../types/types";
 
-export function ListItem ({id, title, time, isSelected, selectFunction} : TaskProps) {
+export function ListItem ({id, title, time, isSelected, selectFunction} : SelectableTask) {
     return (
         <>
         <li className={`${style.item} ${isSelected ? style.itemSelecionado : ''}`}

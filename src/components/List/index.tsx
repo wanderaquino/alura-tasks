@@ -1,8 +1,8 @@
 import { ListItem } from "./ListItem";
 import style from "./style.module.scss";
-import { TaskList } from "../../types/types";
+import { SelectableTaskList } from "../../types/types";
 
-export function List ({tasks, selectFunction} : TaskList) {
+export function List ({tasks, selectFunction} : SelectableTaskList) {
     return (
         <aside className={style.listaTarefas}>
         {

@@ -5,11 +5,7 @@ export interface TaskItemProps {
     isSelected: boolean
 };
 
-export interface TaskProps {
-    id: string,
-    title: string, 
-    time: string,
-    isSelected: boolean,
+export interface SelectableTask extends TaskItemProps {
     selectFunction: (taskItem : TaskItemProps) => void
 };
 
@@ -17,7 +13,7 @@ export interface TaskListProps {
     tasks: Array<TaskItemProps>
 };
 
-export interface TaskList extends TaskListProps {
+export interface SelectableTaskList extends TaskListProps {
    selectFunction: (taskItem : TaskItemProps) => void
 }
 
