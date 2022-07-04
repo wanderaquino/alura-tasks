@@ -20,3 +20,7 @@ export interface TaskListProps {
 export interface TaskList extends TaskListProps {
    selectFunction: (taskItem : TaskItemProps) => void
 }
+
+export interface FormProps {
+    addTask: ({} : TaskItemProps)=>void
+}
