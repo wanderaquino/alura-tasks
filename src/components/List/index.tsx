@@ -18,6 +18,7 @@ export function List ({tasks, selectFunction} : SelectableTaskList) {
                     title={task.title} 
                     time={task.time} 
                     isSelected={task.isSelected}
+                    isFinished={task.isFinished}
                     selectFunction={selectFunction} 
                 />)
             }
