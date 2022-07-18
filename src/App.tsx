@@ -16,7 +16,7 @@ function App() {
   function addNewTask({id, title, time, isSelected = false}: TaskItemProps ) {
     const {tasks} = taskList;
     setTaskList({
-        tasks: [...tasks, {id, title, time, isSelected}]
+        tasks: [...tasks, {id, title, time, isSelected, isFinished: false}]
       });
   }
 
@@ -35,13 +35,30 @@ function App() {
     )
   }
 
+  function finishTask () {
+    const taskToFinish = selectedTask;
+    console.log("taskToFinish: ", taskToFinish);
+    setTaskList(previousTaskList => 
+      {
+        return {
+          tasks: previousTaskList.tasks.map(task => {
+            return {
+              ...task, isSelected: false, isFinished: task.id === taskToFinish?.id ? true : false
+            }
+          })
+        }
+      }
+    )
+    
+  }
+
   return (
     <div className={style.AppStyle}>
       <Form addTask={addNewTask}/>
       {
         taskList.tasks && <List tasks={taskList.tasks} selectFunction={selectTask}/>
       }
-      <Stopwatch time={selectedTask ? selectedTask.time : "00:00"}/>
+      <Stopwatch time={selectedTask ? selectedTask.time : "00:00"} finishTask={finishTask}/>
     </div>
   )
 }
