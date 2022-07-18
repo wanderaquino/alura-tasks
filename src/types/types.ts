@@ -30,5 +30,6 @@ export interface WatchProps {
 export interface ButtonProps {
     textButton: string,
     type: "button" | "submit" | "reset",
+    isDisabled?:boolean,
     onClickFunction: () => void
 }
