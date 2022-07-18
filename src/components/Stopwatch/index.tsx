@@ -13,7 +13,8 @@ export function Stopwatch ({time, finishTask} : WatchProps) {
 
     const [manageInterval, setManageInterval] = useState({
         shouldReloadInterval: false,
-        shouldClearInterval: false
+        shouldClearInterval: false,
+        shoudBlockButton: false
     });
     const [intervalId, setIntervalId] = useState<number>(0);
 
@@ -51,7 +52,8 @@ export function Stopwatch ({time, finishTask} : WatchProps) {
         if(parsedHours === 0 && parsedMinutes === 0) {
             setManageInterval({
                 shouldReloadInterval: false,
-                shouldClearInterval: true
+                shouldClearInterval: true,
+                shoudBlockButton: false
             });
             finishTask && finishTask();
             return;
@@ -66,7 +68,8 @@ export function Stopwatch ({time, finishTask} : WatchProps) {
             });
             setManageInterval({
                 shouldReloadInterval: true,
-                shouldClearInterval: true
+                shouldClearInterval: true,
+                shoudBlockButton: true
             });
             return;
         }
@@ -80,7 +83,8 @@ export function Stopwatch ({time, finishTask} : WatchProps) {
             })
             setManageInterval({
                 shouldReloadInterval: true,
-                shouldClearInterval: true
+                shouldClearInterval: true,
+                shoudBlockButton: true
             });
             return;
         }
@@ -92,7 +96,7 @@ export function Stopwatch ({time, finishTask} : WatchProps) {
             <div className={style.relogioWrapper}>
               <Watch time={timer.time} />  
             </div>
-            <Button textButton="Começar" type="button" onClickFunction={() => runStopwatch()} />
+            <Button isDisabled={manageInterval.shoudBlockButton} textButton="Começar" type="button" onClickFunction={() => runStopwatch()} />
         </div>
     )
 }
