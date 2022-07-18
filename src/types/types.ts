@@ -2,7 +2,8 @@ export interface TaskItemProps {
     id: string,
     title: string, 
     time: string,
-    isSelected: boolean
+    isSelected: boolean,
+    isFinished: boolean
 };
 
 export interface SelectableTask extends TaskItemProps {
@@ -22,11 +23,8 @@ export interface FormProps {
 }
 
 export interface WatchProps {
-    time: string
-}
-
-export interface WatchTime {
-    startTime: string
+    time: string,
+    finishTask?: () => void
 }
 
 export interface ButtonProps {
