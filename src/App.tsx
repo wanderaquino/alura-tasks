@@ -37,19 +37,21 @@ function App() {
 
   function finishTask () {
     const taskToFinish = selectedTask;
-    console.log("taskToFinish: ", taskToFinish);
+    
     setTaskList(previousTaskList => 
       {
         return {
           tasks: previousTaskList.tasks.map(task => {
-            return {
-              ...task, isSelected: false, isFinished: task.id === taskToFinish?.id ? true : false
-            }
+            if(task.id === taskToFinish?.id) {
+              return {
+                ...task, isSelected: false, isFinished: true
+              }
+            } 
+            return task;
           })
         }
       }
-    )
-    
+    )  
   }
 
   return (
