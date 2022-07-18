@@ -1,14 +1,14 @@
 import {Button} from "../Button/index";
 import { Watch } from "./Watch";
 import style from "./style.module.scss";
-import {WatchProps, WatchTime} from "../../types/types";
+import {WatchProps} from "../../types/types";
 import { useEffect, useState } from "react";
 const INITIAL_COUNT_VALUE = 60
 
-export function Stopwatch ({time} : WatchProps) {
+export function Stopwatch ({time, finishTask} : WatchProps) {
 
-    const [timer, setTimer] = useState<WatchTime>({
-        startTime: "00:00"
+    const [timer, setTimer] = useState<WatchProps>({
+        time: "00:00"
     });
 
     const [manageInterval, setManageInterval] = useState({
@@ -29,7 +29,7 @@ export function Stopwatch ({time} : WatchProps) {
 
     useEffect(() => {
         setTimer({
-            startTime: time
+            time: time
         });
     }, [time]);
 
@@ -40,10 +40,10 @@ export function Stopwatch ({time} : WatchProps) {
     }
 
     function stopWatchRules() {
-        const {startTime} = timer;
+        const {time} = timer;
 
-        const minutes = /:(\d\d)/.exec(startTime);
-        const hours = /(\d\d):/.exec(startTime);
+        const minutes = /:(\d\d)/.exec(time);
+        const hours = /(\d\d):/.exec(time);
             
         let parsedMinutes = parseInt(minutes? minutes[1] : "");
         let parsedHours = parseInt(hours? hours[1] : "");
@@ -53,7 +53,8 @@ export function Stopwatch ({time} : WatchProps) {
                 shouldReloadInterval: false,
                 shouldClearInterval: true
             });
-            return false
+            finishTask && finishTask();
+            return;
         }
 
         if(parsedHours > 0 && parsedMinutes === 0 ) {
@@ -61,13 +62,13 @@ export function Stopwatch ({time} : WatchProps) {
             parsedMinutes = INITIAL_COUNT_VALUE -1;
             const newTime = `${parsedHours.toString().padStart(2,"0")}:${parsedMinutes.toString()}`;
             setTimer({
-                startTime: newTime
+                time: newTime
             });
             setManageInterval({
                 shouldReloadInterval: true,
                 shouldClearInterval: true
             });
-            return true;
+            return;
         }
 
 
@@ -75,13 +76,13 @@ export function Stopwatch ({time} : WatchProps) {
             parsedMinutes = parsedMinutes - 1;
             const newTime = `${parsedHours.toString().padStart(2,"0")}:${parsedMinutes.toString().padStart(2,"0")}`;
             setTimer({
-                startTime: newTime
+                time: newTime
             })
             setManageInterval({
                 shouldReloadInterval: true,
                 shouldClearInterval: true
             });
-            return true;
+            return;
         }
     }
 
@@ -89,7 +90,7 @@ export function Stopwatch ({time} : WatchProps) {
         <div className={style.cronometro}>
             <p className={style.titulo}>Escolha um card e inicie o cronômetro</p>
             <div className={style.relogioWrapper}>
-              <Watch time={timer.startTime} />  
+              <Watch time={timer.time} />  
             </div>
             <Button textButton="Começar" type="button" onClickFunction={() => runStopwatch()} />
         </div>
