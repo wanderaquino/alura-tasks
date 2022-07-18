@@ -15,6 +15,11 @@
     }
   }
   
+  .buttonDisabled {
+    background-color: #4D4D4D;
+    pointer-events: none;
+  } 
+
   @media screen and (min-width: 1280px) {
     .botao {
       grid-column-start: span 2;
